@@ -1,0 +1,401 @@
+<!-- XSite by Wind_Blood 保留所有权利 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>远光 官网</title>
+  <style>
+    :root {
+      --bg-dark: linear-gradient(45deg, #1a1a1a, #2d2d2d);
+      --black-full: #000000;
+      --accent: #007aff;
+    }
+
+    * {
+      user-select: none;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg-dark);
+      color: white;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      padding-bottom: 100px;
+    }
+
+    nav {
+      background: var(--black-full);
+      padding: 20px 0;
+      text-align: center;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 999;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 20px;
+      font-size: 18px;
+      padding: 10px 20px;
+      border-radius: 20px;
+      transition: transform 0.2s ease, background-color 0.3s;
+      display: inline-block;
+    }
+
+    nav a:hover {
+      background-color: var(--accent);
+    }
+
+    nav a:active {
+      transform: scale(0.95);
+    }
+
+    .content {
+      position: relative;
+      padding-top: 100px;
+      text-align: center;
+    }
+
+    section {
+      min-height: calc(100vh - 140px);
+      padding-top: 100px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      opacity: 0;
+      transform: scale(0.98);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      pointer-events: none;
+    }
+
+    section.active {
+      opacity: 1;
+      transform: scale(1);
+      pointer-events: auto;
+      z-index: 1;
+    }
+
+    h1, h2, p {
+      margin: 20px 0;
+    }
+
+    .card {
+      width: 320px;
+      height: 320px;
+      background: linear-gradient(45deg, #1a1a1a, #2d2d2d);
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: box-shadow 0.3s ease, transform 0.15s ease;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .card:hover {
+      transform: translateX(-50%) scale(1.05);
+      box-shadow: 0 0 10px rgba(0, 122, 255, 0.4),
+                  0 0 20px rgba(0, 122, 255, 0.3),
+                  0 0 40px rgba(0, 122, 255, 0.2);
+    }
+
+    .card:active {
+      transform: translateX(-50%) scale(0.95);
+    }
+
+    .card-text {
+      font-size: 24px;
+      text-align: center;
+      padding: 30px;
+    }
+
+    a.cta-button {
+      position: absolute;
+      left: 50%;
+      top: 800px;
+      transform: translateX(-50%);
+      padding: var(--btn-size, 14px 30px);
+      background: var(--btn-bg, #007aff);
+      border-radius: var(--btn-radius, 999px);
+      color: var(--text-color, white);
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      text-align: center;
+      display: inline-block;
+      transition: all 0.3s ease;
+      --glow-color: var(--btn-glow-color, #00c6ff);
+      --glow-intensity: var(--btn-glow-intensity, 0.5);
+    }
+
+    a.cta-button:hover {
+      transform: translateX(-50%) scale(1.05);
+      box-shadow: 0 0 15px var(--glow-color);
+    }
+
+    a.cta-button:active {
+      transform: translateX(-50%) scale(0.95);
+      box-shadow: 0 5px 15px rgba(0, 122, 255, 0.2),
+                  0 0 8px var(--glow-color);
+    }
+
+    footer {
+      background: var(--black-full);
+      text-align: center;
+      padding: 20px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      z-index: 998;
+    }
+
+    footer p {
+      margin: 0;
+      font-size: 14px;
+      color: #00ff88;
+      text-shadow: 0 0 5px rgba(255,255,255,0.8);
+    }
+
+    @media (max-width: 768px) {
+      .card {
+        position: static;
+        margin: 30px auto;
+        transform: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- 导航 -->
+  <nav>
+    <a href="#" onclick="switchPage('home')"
+       style="font-size: 20px; background: rgba(0,122,255,0.2); border-radius: 25px;">
+      首页
+    </a>
+    <a href="#" onclick="switchPage('inf')"
+       style="font-size: 18px; margin-left: 30px;">
+      介绍
+    </a>
+    <a href="#" onclick="switchPage('rules')"
+       style="font-size: 18px; margin-left: 30px;">
+      公告
+    </a>
+    <a href="#" onclick="switchPage('run')"
+       style="font-size: 18px; margin-left: 30px;">
+      赞助人员名单
+    </a>
+    <a href="#" onclick="switchPage('rui')"
+       style="font-size: 18px; margin-left: 30px;">
+      服务器管理组成员
+    </a>
+    <a href="#" onclick="switchPage('rua')"
+       style="font-size: 18px; margin-left: 30px;">
+      关于我们
+    </a>
+  </nav>
+
+  <div class="content">
+    <!-- 首页 -->
+    <section id="home">
+      <h1 style="font-size: 48px; color: #ffffff; text-shadow: 0 0 20px rgba(0,122,255,0.8); margin-top: 100px;">
+        远光
+      </h1>
+
+      <p style="font-size: 20px; color: #aaaaaa; position: absolute; top: 280px; width: 100%;">
+        公益的纯生存服务器
+      </p>
+
+      <div class="card" style="top: 400px; left: 25%; box-shadow: 0 0 20px rgb(255, 68, 68);">
+        <div class="card-text" style="color: #ffffff; text-shadow: 0 0 10px rgb(255, 68, 68);">死亡不掉落</div>
+      </div>
+
+      <div class="card" style="top: 400px; left: 50%; box-shadow: 0 0 20px rgb(0, 255, 110);">
+        <div class="card-text" style="color: #ffffff; text-shadow: 0 0 10px rgba(0, 255, 110);">全天24小时在线</div>
+      </div>
+
+      <div class="card" style="top: 400px; left: 75%; box-shadow: 0 0 20px rgba(0,122,255,1.0);">
+        <div class="card-text" style="color: #ffffff; text-shadow: 0 0 10px rgba(0, 122, 255);">严格的反作弊</div>
+      </div>
+
+      <a href="https://qm.qq.com/q/JbP3DGGIIS"
+         class="cta-button"
+         role="button"
+         style="--btn-bg: #5eacff;
+                --btn-size: 14px 30px;
+                --btn-glow-color: #00c6ff;
+                --btn-glow-intensity: 0.3;
+                --btn-radius: 999px;
+                --text-color: rgb(0, 0, 0);">
+        加入我们
+      </a>
+    </section>
+
+    <section id="inf">
+      <h1 style="font-size: 48px; color: #00ff88; text-shadow: 0 0 20px rgba(0,255,136,0.8); margin-top: 100px;">
+        介绍
+      </h1>
+
+      <p style="font-size: 20px;
+               color: #ffffff;
+               position: absolute;
+               top: 300px;
+               width: 100%;
+               text-align: center;">
+        远光 Farlight 是一个公益的生存服务器，创立于 2024年1月10日 。
+      </p>
+      
+      <p style="font-size: 20px;
+               color: #ffffff;
+               position: absolute;
+               top: 350px;
+               width: 100%;
+               text-shadow: 0 0 20px rgb(255, 0, 0);
+               text-align: center;">
+        想不出来后面该写啥了，那就这样吧，谁像来玩就点一下下面的按钮，谢谢（
+      </p>
+
+      <a href="https://qm.qq.com/q/JbP3DGGIIS"
+         class="cta-button"
+         role="button"
+         style="--btn-bg: #5eacff;
+                --btn-size: 14px 30px;
+                --btn-glow-color: #00c6ff;
+                --btn-glow-intensity: 0.3;
+                --btn-radius: 999px;
+                --text-color: rgb(0, 0, 0);
+                top: 430px">
+        加入我们
+      </a>
+    </section>
+
+    <section id="rules">
+      <h1 style="font-size: 48px; color: #ffffff; text-shadow: 0 0 20px rgba(255, 68, 0, 0.8); margin-top: 100px;">
+        公告
+      </h1>
+
+      <a href="https://docs.qq.com/doc/p/4662737dc0a726f6bb3fbbb2a70ee77df1fc8d2d"
+         class="cta-button"
+         role="button"
+         style="--btn-bg: #5eacff;
+                --btn-size: 14px 30px;
+                --btn-glow-color: #00c6ff;
+                --btn-glow-intensity: 0.3;
+                --btn-radius: 999px;
+                --text-color: rgb(0, 0, 0);
+                top: 330px">
+        点我查看玩家行为准则
+      </a>
+      
+      <a href="https://docs.qq.com/doc/p/81a4b0b710ad59c27129e5450f8b6653e0c79879"
+         class="cta-button"
+         role="button"
+         style="--btn-bg: #5eacff;
+                --btn-size: 14px 30px;
+                --btn-glow-color: #00c6ff;
+                --btn-glow-intensity: 0.3;
+                --btn-radius: 999px;
+                --text-color: rgb(0, 0, 0);
+                top: 430px">
+         点我查看禁止作弊行为
+       </a>
+    </section>
+    <section id="run">
+      <h1 style="font-size: 48px; color: #ffffff; text-shadow: 0 0 20px rgba(255, 68, 0, 0.8); margin-top: 100px;">
+        赞助人员名单
+      </h1>
+
+      <a href="https://docs.qq.com/doc/p/4677002a3926b7cdc8184649e04089effeccb87f"
+         class="cta-button"
+         role="button"
+         style="--btn-bg: #5eacff;
+                --btn-size: 14px 30px;
+                --btn-glow-color: #00c6ff;
+                --btn-glow-intensity: 0.3;
+                --btn-radius: 999px;
+                --text-color: rgb(0, 0, 0);
+                top: 430px">
+        点我查看赞助人员名单
+      </a>
+    </section>
+    
+     <section id="rui">
+      <h1 style="font-size: 48px; color: #ffffff; text-shadow: 0 0 20px rgba(255, 68, 0, 0.8); margin-top: 100px;">
+        服务器管理组成员
+      </h1>
+
+      <a href="https://docs.qq.com/doc/p/e5857aad22e655032ce6d0a3edb3f2ef3674d064"
+         class="cta-button"
+         role="button"
+         style="--btn-bg: #5eacff;
+                --btn-size: 14px 30px;
+                --btn-glow-color: #00c6ff;
+                --btn-glow-intensity: 0.3;
+                --btn-radius: 999px;
+                --text-color: rgb(0, 0, 0);
+                top: 430px">
+        点我查看服务器管理组成员
+      </a>
+    </section>
+    
+    <section id="rua">
+      <h1 style="font-size: 48px; color: #ffffff; text-shadow: 0 0 20px rgba(255, 68, 0, 0.8); margin-top: 100px;">
+        关于我们
+      </h1>
+
+      <a href="https://docs.qq.com/doc/p/5fc9d6e94f01cb56cb7f06c34f12f0b32e8d96c5"
+         class="cta-button"
+         role="button"
+         style="--btn-bg: #5eacff;
+                --btn-size: 14px 30px;
+                --btn-glow-color: #00c6ff;
+                --btn-glow-intensity: 0.3;
+                --btn-radius: 999px;
+                --text-color: rgb(0, 0, 0);
+                top: 430px">
+        点我查看关于我们
+      </a>
+    </section>
+  </div>
+
+  <footer>
+    <p>© 2024-2025 远光 版权所有 - 网站使用 XSite 作为模板 - 远光服务器保留所有权利</p>
+  </footer>
+
+  <script>
+    let currentPage = 'home';
+
+    function switchPage(pageId) {
+      if (pageId === currentPage) return;
+
+      const oldSection = document.getElementById(currentPage);
+      const newSection = document.getElementById(pageId);
+
+      oldSection.classList.remove('active');
+      newSection.classList.add('active');
+
+      currentPage = pageId;
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      const home = document.getElementById("home");
+      requestAnimationFrame(() => {
+        home.classList.add("active");
+      });
+    });
+  </script>
+</body>
+</html>
