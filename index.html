@@ -3817,7 +3817,7 @@
             try {
                 const serverAddress = "farlight.xsmp.top";
                 
-                fetch(`https://api.mcstatus.io/v2/status/bedrock/${serverAddress}`)
+                fetch(`https://api.mcstatus.io/v2/status/java/${serverAddress}`)
                     .then(response => response.json())
                     .then(data => {
                         if (data.online) {
