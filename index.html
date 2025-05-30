@@ -613,9 +613,16 @@ Minecraft Farlight [开荒阶段]】</a>
         <div class="modal-content">
             <span class="close" onclick="closeGuide()">&times;</span>
             <h2>新手指南</h2>
-            <div class="announcement-list">
+            <div class="announcement-li<div class="announcement-item" onclick="showDetail('pvp')">
+                    <div class="announcement-title">通知：端午假期活动</div>
+                    <div class="announcement-date">
+                        <span>2025-05-29</span>
+                        <span class="view-count"><i class="fas fa-eye"></i>观看：<span id="view-maintenance">0</span>次</span>
+                    </div>
+                </div>st">
+               
                 <div class="announcement-item" onclick="showDetail('maintenance')">
-                    <div class="announcement-title">通知：维护通知</div>
+                    <div class="announcement-title">通知：维护延迟通知</div>
                     <div class="announcement-date">
                         <span>2025-05-29</span>
                         <span class="view-count"><i class="fas fa-eye"></i>观看：<span id="view-maintenance">0</span>次</span>
@@ -948,6 +955,22 @@ Minecraft Farlight [开荒阶段]】</a>
                     content = `
                         <h2>服务器维护通知</h2>
                         <p>亲爱的玩家们：</p>
+                        <p>原定于2025年5月30日 18：00 - 18：30的维护已推迟！</p>
+                        <p>延迟后的维护时间：2025年5月31日 18:00 - 18:30</p>
+                        <p>维护内容：</p>
+                        <p>1. 物品掉落保护插件</p>
+                        <p>2. 云服聊天艾特</p>
+                        <p>3.公会插件</p>
+                        <p>4.拍卖行插件</p>
+                        <p>维护期间服务器将无法访问，请提前做好准备。</p>
+                        <div class="image-container">
+                        </div>
+                    `;
+                    break;
+                case 'land':
+                    content = `
+                         <h2>服务器维护通知</h2>
+                        <p>亲爱的玩家们：</p>
                         <p>我们将在2025年5月30日进行全服维护，具体安排如下：</p>
                         <p>维护时间：2025年5月30日 18:00 - 18:30</p>
                         <p>维护内容：</p>
@@ -962,7 +985,7 @@ Minecraft Farlight [开荒阶段]】</a>
                         </div>
                     `;
                     break;
-                case 'land':
+                case 'economy':
                     content = `
                         <h2>服务器维护通知</h2>
                         <p>亲爱的玩家们：</p>
@@ -978,31 +1001,16 @@ Minecraft Farlight [开荒阶段]】</a>
                         </div>
                     `;
                     break;
-                case 'economy':
-                    content = `
-                        <h2>经济系统详解</h2>
-                        <p>服务器经济系统说明：</p>
-                        <p>1. 货币获取方式</p>
-                        <p>2. 商店系统使用</p>
-                        <p>3. 交易系统说明</p>
-                        <p>4. 经济插件命令</p>
-                        <div class="image-container">
-                            <img src="images/coins1.png" alt="经济系统">
-                            <img src="images/coins2.png" alt="货币系统">
-                            <img src="images/coins3.png" alt="交易系统">
-                        </div>
-                    `;
-                    break;
                 case 'pvp':
                     content = `
-                        <h2>PVP竞技场开放</h2>
-                        <p>PVP竞技场现已开放！</p>
-                        <p>开放时间：每日 14:00-22:00</p>
-                        <p>参与方式：/pvp join</p>
-                        <p>奖励机制：</p>
-                        <p>1. 每日排名奖励</p>
-                        <p>2. 周赛奖励</p>
-                        <p>3. 月赛奖励</p>
+                        <h2>端午节活动通知</h2>
+                        <p>端午假期活动</p>
+                        <p>活动时间：2025年5月31日 - 2025年6月15日 18：30</p>
+                        <p>累计签到服务器3天获得活跃称号</p>
+                        <p>累计进入服务器7天每次进入时长不少于30分钟即可获得下界合金X30</p>
+                        <p>在活动期间建一些好看的建筑即可获得服务器内肝帝称号</p>
+                        <p>连续登录服务器3天每次进入时长不少于30分钟即可获得钻石X30</p>
+                        <p>活动期间建筑排名前三的即可进入服务器建筑榜</p>
                         <div class="image-container">
                             <img src="images/stone_sword_i.png" alt="PVP武器">
                             <img src="images/hstj.png" alt="竞技场">
