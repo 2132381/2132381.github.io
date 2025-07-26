@@ -1,0 +1,289 @@
+﻿
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>重新定向中...</title>
+  <link rel="icon" type="image/ico" href="./images/logo.png">
+  <meta http-equiv="refresh" content="5;url=https://www.farlightm.com">
+  
+ 
+<style>
+body {
+  color: #333;
+  font-family: 'Helvetica', arial;
+}
+.wrap {
+  padding: 40px;
+  text-align: center;
+}
+hr {
+  clear: both;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  border: 0;
+  border-top: 1px solid #aaa;
+}
+h1 {
+  font-size: 30px;
+  margin-bottom: 40px;
+}
+p {
+  margin-bottom: 20px;
+}
+.btn {
+  background: #428bca;
+  border: #357ebd solid 1px;
+  border-radius: 3px;
+  color: #fff;
+  display: inline-block;
+  font-size: 14px;
+  padding: 8px 15px;
+  text-decoration: none;
+  text-align: center;
+  min-width: 60px;
+  position: relative;
+  transition: color 0.1s ease;
+}
+.btn:hover {
+  background: #357ebd;
+}
+.btn.btn-big {
+  font-size: 18px;
+  padding: 15px 20px;
+  min-width: 100px;
+}
+.btn-close {
+  color: #aaa;
+  font-size: 30px;
+  text-decoration: none;
+  position: absolute;
+  right: 5px;
+  top: 0;
+}
+.btn-close:hover {
+  color: #919191;
+}
+.modal:before {
+  content: "";
+  display: none;
+  background: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+}
+.modal:target:before {
+  display: block;
+}
+.modal:target .modal-dialog {
+  -webkit-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  transform: translate(0, 0);
+  top: 20%;
+}
+.modal-dialog {
+  background: #fefefe;
+  border: #333 solid 1px;
+  border-radius: 5px;
+  margin-left: -200px;
+  position: fixed;
+  left: 50%;
+  top: -100%;
+  z-index: 11;
+  width: 360px;
+  -webkit-transform: translate(0, -500%);
+  -ms-transform: translate(0, -500%);
+  transform: translate(0, -500%);
+  -webkit-transition: -webkit-transform 0.3s ease-out;
+  -moz-transition: -moz-transform 0.3s ease-out;
+  -o-transition: -o-transform 0.3s ease-out;
+  transition: transform 0.3s ease-out;
+}
+.modal-body {
+  padding: 20px;
+}
+.modal-header,
+.modal-footer {
+  padding: 10px 20px;
+}
+.modal-header {
+  border-bottom: #eee solid 1px;
+}
+.modal-header h2 {
+  font-size: 20px;
+}
+.modal-footer {
+  border-top: #eee solid 1px;
+  text-align: right;
+}
+</style>
+
+</head>
+
+<body translate="no" >
+  <div class="wrap">
+
+  
+  
+  
+    
+  
+</div>
+ 
+
+
+</body>
+<style>
+        /* 弹窗蒙层样式 */
+        .web-notice {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 99999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        /* 弹窗内容容器 */
+        .web-notice.active {
+            opacity: 1;
+        }
+        
+        .notice-content {
+            width: 90%;
+            max-width: 550px;
+            background: #FFF;
+            border-radius: 20px;
+            padding: 40px 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+        
+        .web-notice.active .notice-content {
+            transform: translateY(0);
+        }
+        
+        /* 标题样式 */
+        .notice-title {
+            font-weight: bold;
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        /* 内容样式 */
+        .notice-message {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        
+        /* 按钮样式 */
+        .notice-button {
+            display: block;
+            background: #98a3ff;
+            color: #FFF;
+            text-align: center;
+            font-weight: bold;
+            font-size: 16px;
+            padding: 15px;
+            border-radius: 30px;
+            width: 80%;
+            max-width: 200px;
+            margin: 0 auto;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        
+        .notice-button:hover {
+            background: #7b8aff;
+            transform: translateY(-2px);
+        }
+        
+        .notice-button:active {
+            transform: translateY(0);
+        }
+        
+        /* 响应式调整 */
+        @media (max-width: 600px) {
+            .notice-content {
+                padding: 30px 20px;
+            }
+            
+            .notice-title {
+                font-size: 20px;
+            }
+            
+            .notice-message {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 网站通知弹窗 -->
+    <div class="web-notice" id="webNotice">
+        <div class="notice-content">
+            <h3 class="notice-title">幻境灵云</h3>
+            <h2 class="notice-title">请注意本网页将在5秒后自动跳转到<a href="https://www.farlightm.com">幻境灵云官网</a>
+</h2>
+            <div class="notice-message" align ="center">
+                      页面将在5秒钟后自动跳转到<a href="https://www.farlightm.com">幻境灵云官网</a><br>
+                      欢迎加入我们QQ：<a href="https://qm.qq.com/q/9NtwsNzH7a">1019368783</a>
+    </div>
+                    </div>
+    </div>
+
+    <script>
+        // 页面加载完成后显示弹窗
+        document.addEventListener('DOMContentLoaded', function() {
+            const notice = document.getElementById('webNotice');
+            const closeButton = document.getElementById('closeNotice');
+            
+            // 显示弹窗（添加active类）
+            setTimeout(() => {
+                notice.classList.add('active');
+            }, 100);
+            
+            // 关闭弹窗
+            closeButton.addEventListener('click', function() {
+                notice.classList.remove('active');
+                setTimeout(() => {
+                    notice.remove();
+                }, 300); // 等待动画完成后再移除元素
+            });
+            
+            // 点击蒙层也可以关闭
+            notice.addEventListener('click', function(e) {
+                if (e.target === notice) {
+                    notice.classList.remove('active');
+                    setTimeout(() => {
+                        notice.remove();
+                    }, 300);
+                }
+            });
+            
+            // 可以添加本地存储功能，记录用户是否已关闭通知
+            // 例如使用localStorage.setItem('noticeClosed', 'true');
+            // 并在显示前检查localStorage.getItem('noticeClosed')
+        });
+    </script>
+
+</html>
+
+
+ 
