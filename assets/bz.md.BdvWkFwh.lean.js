@@ -1,0 +1,1 @@
+import{_ as t,c as s,o as p,ae as r}from"./chunks/framework.Cd-3tpCq.js";const g=JSON.parse('{"title":"圈地帮助","description":"","frontmatter":{},"headers":[],"relativePath":"bz.md","filePath":"bz.md"}'),a={name:"bz.md"};function l(i,e,o,c,n,d){return p(),s("div",null,e[0]||(e[0]=[r("",48)]))}const m=t(a,[["render",l]]);export{g as __pageData,m as default};

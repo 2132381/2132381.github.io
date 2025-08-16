@@ -1,0 +1,1 @@
+import{_ as e,c as t,o as r,ae as o}from"./chunks/framework.Cd-3tpCq.js";const _=JSON.parse('{"title":"下载客户端🎉","description":"","frontmatter":{},"headers":[],"relativePath":"khd.md","filePath":"khd.md"}'),s={name:"khd.md"};function l(d,a,i,n,c,h){return r(),t("div",null,a[0]||(a[0]=[o("",7)]))}const m=e(s,[["render",l]]);export{_ as __pageData,m as default};

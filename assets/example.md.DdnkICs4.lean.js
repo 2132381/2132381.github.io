@@ -1,0 +1,1 @@
+import{_ as e,c as t,o,ae as p}from"./chunks/framework.Cd-3tpCq.js";const m=JSON.parse('{"title":"进服教程","description":"","frontmatter":{},"headers":[],"relativePath":"example.md","filePath":"example.md"}'),r={name:"example.md"};function l(c,a,i,s,n,h){return o(),t("div",null,a[0]||(a[0]=[p("",29)]))}const u=e(r,[["render",l]]);export{m as __pageData,u as default};
