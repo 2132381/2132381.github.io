@@ -1,0 +1,1 @@
+import{_ as e,c as t,o as r,ae as o}from"./chunks/framework.Cd-3tpCq.js";const _=JSON.parse('{"title":"处罚","description":"","frontmatter":{},"headers":[],"relativePath":"chf.md","filePath":"chf.md"}'),p={name:"chf.md"};function c(s,a,l,i,n,d){return r(),t("div",null,a[0]||(a[0]=[o("",13)]))}const f=e(p,[["render",c]]);export{_ as __pageData,f as default};

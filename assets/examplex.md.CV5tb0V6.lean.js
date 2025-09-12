@@ -1,0 +1,1 @@
+import{_ as e,c as t,o as r,ae as o}from"./chunks/framework.Cd-3tpCq.js";const m=JSON.parse('{"title":"玩家行为准则","description":"","frontmatter":{},"headers":[],"relativePath":"examplex.md","filePath":"examplex.md"}'),l={name:"examplex.md"};function i(p,a,s,h,n,c){return r(),t("div",null,a[0]||(a[0]=[o("",22)]))}const u=e(l,[["render",i]]);export{m as __pageData,u as default};

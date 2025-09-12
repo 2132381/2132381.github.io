@@ -1,0 +1,1 @@
+import{_ as e,c as t,o,ae as r}from"./chunks/framework.Cd-3tpCq.js";const h=JSON.parse('{"title":"我们与XSMP的关系","description":"","frontmatter":{},"headers":[],"relativePath":"ko.md","filePath":"ko.md"}'),s={name:"ko.md"};function i(l,a,n,c,d,p){return o(),t("div",null,a[0]||(a[0]=[r("",5)]))}const m=e(s,[["render",i]]);export{h as __pageData,m as default};

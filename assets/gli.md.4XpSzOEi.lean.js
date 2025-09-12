@@ -1,0 +1,1 @@
+import{_ as e,c as t,o as r,ae as o}from"./chunks/framework.Cd-3tpCq.js";const u=JSON.parse('{"title":"管理员行为准则","description":"","frontmatter":{},"headers":[],"relativePath":"gli.md","filePath":"gli.md"}'),l={name:"gli.md"};function i(p,a,h,s,c,n){return r(),t("div",null,a[0]||(a[0]=[o("",23)]))}const f=e(l,[["render",i]]);export{u as __pageData,f as default};

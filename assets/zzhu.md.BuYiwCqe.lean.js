@@ -1,0 +1,1 @@
+import{_ as e,c as a,o as r,ae as d}from"./chunks/framework.Cd-3tpCq.js";const _=JSON.parse('{"title":"赞助","description":"","frontmatter":{},"headers":[],"relativePath":"zzhu.md","filePath":"zzhu.md"}'),i={name:"zzhu.md"};function l(n,t,o,h,s,c){return r(),a("div",null,t[0]||(t[0]=[d("",7)]))}const u=e(i,[["render",l]]);export{_ as __pageData,u as default};
