@@ -1,0 +1,1 @@
+import{_ as e,c as t,o as r,ae as o}from"./chunks/framework.Cd-3tpCq.js";const f=JSON.parse('{"title":"社区规则","description":"","frontmatter":{},"headers":[],"relativePath":"examplexd.md","filePath":"examplexd.md"}'),p={name:"examplexd.md"};function l(s,a,c,h,i,d){return r(),t("div",null,a[0]||(a[0]=[o("",17)]))}const m=e(p,[["render",l]]);export{f as __pageData,m as default};
