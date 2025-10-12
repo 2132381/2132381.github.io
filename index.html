@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>幻境灵云 - 首页</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <!-- 先引入配置文件 -->
+    <script src="config.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0071e3',
+                        secondary: '#1d1d1f',
+                        light: '#f5f5f7',
+                        dark: '#86868b',
+                    },
+                    fontFamily: {
+                        sans: ['SF Pro Display', 'Helvetica', 'Arial', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            }
+        }
+    </style>
+</head>
+<body class="bg-white text-secondary">
+    <!-- 导航栏 -->
+    <header class="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-md z-50 transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <nav class="flex items-center justify-between h-16 md:h-20">
+                <div class="flex items-center">
+                    <a href="#" class="flex items-center space-x-2">
+                        <i class="fa fa-cube text-primary text-2xl"></i>
+                        <span class="text-lg font-medium" id="site-name"></span>
+                    </a>
+                </div>
+                
+                <!-- 桌面导航 -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="/" class="text-dark hover:text-primary transition-colors text-sm">首页</a>
+					<a href="https://www.xsmp.top" class="text-dark hover:text-primary transition-colors text-sm">XSMP</a>
+                    <a href="#status" class="text-dark hover:text-primary transition-colors text-sm">服务器状态</a>
+                    <a href="#features" class="text-dark hover:text-primary transition-colors text-sm">特色</a>
+                    <a href="#screenshots" class="text-dark hover:text-primary transition-colors text-sm">截图</a>
+                    <a href="#comments" class="text-dark hover:text-primary transition-colors text-sm">玩家留言</a>
+                    <a href="#featured-players" class="text-dark hover:text-primary transition-colors text-sm">管理组</a>
+                    <a href="donate.html" class="text-dark hover:text-primary transition-colors text-sm">赞助支持</a>
+                    <a href="#join" class="text-dark hover:text-primary transition-colors text-sm">加入我们</a>
+                </div>
+                
+                <!-- 移动端菜单按钮 -->
+                <div class="md:hidden">
+                    <button id="menu-toggle" class="text-secondary hover:text-primary">
+                        <i class="fa fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </nav>
+        </div>
+        
+        <!-- 移动端导航菜单 -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="container mx-auto px-4 py-3 space-y-3">
+                <a href="/" class="text-dark hover:text-primary transition-colors text-sm">首页</a>
+				<a href="https://www.xsmp.top" class="text-dark hover:text-primary transition-colors text-sm">XSMP</a>
+                <a href="#status" class="text-dark hover:text-primary transition-colors text-sm">服务器状态</a>
+                <a href="#features" class="block text-dark hover:text-primary transition-colors py-2">特色</a>
+                <a href="#screenshots" class="block text-dark hover:text-primary transition-colors py-2">截图</a>
+                <a href="#comments" class="block text-dark hover:text-primary transition-colors py-2">玩家留言</a>
+                <a href="#featured-players" class="block text-dark hover:text-primary transition-colors py-2">管理组</a>
+                <a href="donate.html" class="block text-dark hover:text-primary transition-colors py-2">赞助支持</a>
+                <a href="#join" class="block text-dark hover:text-primary transition-colors py-2">加入我们</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- 顶部区 -->
+        <section class="pt-32 pb-20 md:pt-40 md:pb-28 bg-light">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-semibold leading-tight mb-6">
+                    探索无限可能的<br class="md:hidden">生存世界
+                </h1>
+                <p class="text-[clamp(1.1rem,2vw,1.3rem)] text-dark max-w-2xl mx-auto mb-10" id="hero-description">
+                    加入服务器，与全球玩家一起创造、冒险、探索
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4 mb-12">
+                    <a href="#join" class="bg-primary hover:bg-primary/90 text-white font-medium py-3 px-8 rounded-full transition-all transform hover:scale-105">
+                        立即加入
+                    </a>
+                    <a href="#status" class="bg-white hover:bg-gray-100 text-secondary font-medium py-3 px-8 rounded-full border border-gray-300 transition-all transform hover:scale-105">
+                        服务器状态
+                    </a>
+                </div>
+                
+                <!-- 重构后的轮播图区域 -->
+                <div class="relative max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-xl transform transition-all duration-500 hover:shadow-2xl">
+                    <!-- 轮播容器 -->
+                    <div id="carousel" class="relative h-[300px] md:h-[400px] lg:h-[500px]">
+                        <!-- 轮播图片将通过JS动态生成 -->
+                    </div>
+                    
+                    <!-- 轮播控制按钮 -->
+                    <button id="carousel-prev" class="absolute left-0 top-0 bottom-0 w-12 md:w-16 flex items-center justify-center text-white bg-black/20 hover:bg-black/40 transition-all z-10">
+                        <i class="fa fa-chevron-left text-xl md:text-2xl"></i>
+                    </button>
+                    <button id="carousel-next" class="absolute right-0 top-0 bottom-0 w-12 md:w-16 flex items-center justify-center text-white bg-black/20 hover:bg-black/40 transition-all z-10">
+                        <i class="fa fa-chevron-right text-xl md:text-2xl"></i>
+                    </button>
+                    
+                    <!-- 轮播指示器 -->
+                    <div id="carousel-indicators" class="absolute bottom-4 left-0 right-0 flex justify-center space-x-2 z-10">
+                        <!-- 指示器将通过JS动态生成 -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 服务器状态 -->
+        <section id="status" class="py-20 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-semibold mb-4">服务器状态</h2>
+                    <p class="text-dark text-lg max-w-2xl mx-auto">实时监控服务器运行状态和在线玩家数量</p>
+                </div>
+                
+                <div class="max-w-4xl mx-auto bg-light rounded-3xl p-8 shadow-sm">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                        <!-- 服务器状态 -->
+                        <div class="text-center p-6 bg-white rounded-xl shadow-sm transform transition-all hover:shadow-md hover:-translate-y-1">
+                            <div class="flex justify-center mb-4">
+                                <div id="server-status-indicator" class="status-indicator w-4 h-4 rounded-full bg-gray-400"></div>
+                            </div>
+                            <h3 class="text-lg font-medium mb-2">服务器状态</h3>
+                            <p id="server-status" class="text-dark font-semibold">
+                                <i class="fa fa-circle-o-notch loading-spinner"></i> 加载中
+                            </p>
+                        </div>
+                        <!-- 服务器IP -->
+                        <div class="text-center p-6 bg-white rounded-xl shadow-sm transform transition-all hover:shadow-md hover:-translate-y-1">
+                            <div class="flex justify-center mb-4">
+                                <i class="fa fa-server text-primary text-2xl"></i>
+                            </div>
+                            <h3 class="text-lg font-medium mb-2">服务器IP</h3>
+                            <p class="text-primary font-semibold select-all" id="server-ip"></p>
+                        </div>
+                        <!-- 在线人数 -->
+                        <div class="text-center p-6 bg-white rounded-xl shadow-sm transform transition-all hover:shadow-md hover:-translate-y-1">
+                            <div class="flex justify-center mb-4">
+                                <i class="fa fa-users text-primary text-2xl"></i>
+                            </div>
+                            <h3 class="text-lg font-medium mb-2">在线玩家</h3>
+                            <p id="player-count" class="text-dark font-semibold">
+                                <i class="fa fa-circle-o-notch loading-spinner"></i> 加载中
+                            </p>
+                        </div>
+                        
+                        <!-- 开服信息 -->
+                        <div class="text-center p-6 bg-white rounded-xl shadow-sm transform transition-all hover:shadow-md hover:-translate-y-1">
+                            <div class="flex justify-center mb-4">
+                                <i class="fa fa-calendar text-primary text-2xl"></i>
+                            </div>
+                            <h3 class="text-lg font-medium mb-2">开服信息</h3>
+                            <p class="text-dark text-sm mb-1">开服日期: <span id="server-launch-date"></span></p>
+                            <p class="text-dark text-sm">已运行: <span id="server-up-time"></span></p>
+                        </div>
+                    </div>
+                    
+                    <!-- 服务器信息 -->
+                    <div class="mt-8">
+                        <h4 class="font-medium mb-4">服务器信息</h4>
+                        <div class="space-y-2 text-sm max-w-md">
+                            <div class="flex justify-between">
+                                <span class="text-dark">版本:</span>
+                                <span id="server-version"></span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-dark">最大玩家数:</span>
+                                <span id="max-players"></span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-dark">最后更新:</span>
+                                <span id="last-updated">从未</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 特色功能 -->
+        <section id="features" class="py-20 bg-light">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-semibold mb-4">服务器特色</h2>
+                    <p class="text-dark text-lg max-w-2xl mx-auto">我们提供独特的游戏体验，让你的冒险更加精彩</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- 特色1 -->
+                    <div class="bg-white rounded-xl p-6 shadow-sm transform transition-all duration-300 hover:shadow-md hover:-translate-y-1">
+                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                            <i class="fa fa-map text-primary text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-medium mb-3">自定义地图</h3>
+                        <p class="text-dark">精心设计的自定义地图，包含各种独特景观和隐藏宝藏，探索无尽乐趣。</p>
+                    </div>
+                    
+                    <!-- 特色2 -->
+                    <div class="bg-white rounded-xl p-6 shadow-sm transform transition-all duration-300 hover:shadow-md hover:-translate-y-1">
+                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                            <i class="fa fa-gift text-primary text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-medium mb-3">定期活动</h3>
+                        <p class="text-dark">每周举办各种游戏活动，参与即可获得丰厚奖励，与其他玩家一决高下。</p>
+                    </div>
+                    
+                    <!-- 特色3 -->
+                    <div class="bg-white rounded-xl p-6 shadow-sm transform transition-all duration-300 hover:shadow-md hover:-translate-y-1">
+                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                            <i class="fa fa-shield text-primary text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-medium mb-3">安全防护</h3>
+                        <p class="text-dark">严格的反作弊系统和管理员监控，保证公平的游戏环境，让你安心游戏。</p>
+                    </div>
+                    
+                    <!-- 特色4 -->
+                    <div class="bg-white rounded-xl p-6 shadow-sm transform transition-all duration-300 hover:shadow-md hover:-translate-y-1">
+                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                            <i class="fa fa-users text-primary text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-medium mb-3">友好社区</h3>
+                        <p class="text-dark">活跃的玩家社区，新玩家将获得指导和帮助，快速融入游戏。</p>
+                    </div>
+                    
+                    <!-- 特色5 -->
+                    <div class="bg-white rounded-xl p-6 shadow-sm transform transition-all duration-300 hover:shadow-md hover:-translate-y-1">
+                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                            <i class="fa fa-rocket text-primary text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-medium mb-3">活动多</h3>
+                        <p class="text-dark">活动多，福利好</p>
+                    </div>
+                    
+                    <!-- 特色6 -->
+                    <div class="bg-white rounded-xl p-6 shadow-sm transform transition-all duration-300 hover:shadow-md hover:-translate-y-1">
+                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                            <i class="fa fa-cogs text-primary text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-medium mb-3">多样玩法</h3>
+                        <p class="text-dark">生存、创造、竞技等多种游戏模式，满足不同玩家的需求。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 游戏截图 -->
+        <section id="screenshots" class="py-20 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-semibold mb-4">游戏截图</h2>
+                    <p class="text-dark text-lg max-w-2xl mx-auto">探索我们服务器中的精彩瞬间</p>
+                </div>
+                
+                <!-- 截图容器 -->
+                <div class="relative max-w-5xl mx-auto">
+                    <div id="screenshot-container"></div>
+                    
+                    <!-- 翻页控制按钮 -->
+                    <div id="pagination-controls" class="flex justify-center items-center mt-10 space-x-4">
+                        <button id="prev-page" class="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center text-dark hover:bg-primary hover:text-white hover:border-primary transition-all disabled:opacity-50 disabled:cursor-not-allowed">
+                            <i class="fa fa-chevron-left"></i>
+                        </button>
+                        
+                        <!-- 页码指示器 -->
+                        <div class="flex space-x-2" id="page-indicators"></div>
+                        
+                        <button id="next-page" class="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center text-dark hover:bg-primary hover:text-white hover:border-primary transition-all">
+                            <i class="fa fa-chevron-right"></i>
+                        </button>
+                    </div>
+                    
+                    <!-- 页码文本显示 -->
+                    <div id="page-info-container" class="text-center mt-4 text-sm text-dark">
+                        <span id="page-info">第 1 页，共 1 页</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 玩家留言区 -->
+        <section id="comments" class="py-20 bg-light">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-semibold mb-4">玩家留言</h2>
+                    <p class="text-dark text-lg max-w-2xl mx-auto">看看其他玩家对我们服务器的评价和建议</p>
+                </div>
+                
+                <div class="max-w-3xl mx-auto">
+                    <div id="comments-container" class="space-y-6">
+                        <!-- 留言将通过JS动态加载 -->
+                        <div class="text-center py-8">
+                            <i class="fa fa-circle-o-notch loading-spinner text-primary text-2xl"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- 留言分页控制 -->
+                    <div class="flex justify-center items-center mt-8 space-x-4">
+                        <button id="prev-comments" class="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center text-dark hover:bg-primary hover:text-white hover:border-primary transition-all disabled:opacity-50 disabled:cursor-not-allowed">
+                            <i class="fa fa-chevron-left"></i>
+                        </button>
+                        
+                        <span id="comments-page-info" class="text-sm text-dark">第 1 页</span>
+                        
+                        <button id="next-comments" class="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center text-dark hover:bg-primary hover:text-white hover:border-primary transition-all">
+                            <i class="fa fa-chevron-right"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="text-center mt-8">
+                        <a href="https://kook.vip/oJO7OB" target="_blank" class="inline-flex items-center text-primary hover:text-primary/80 font-medium transition-colors">
+                            前往留言板页面留言 <i class="fa fa-external-link ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 优秀玩家展示区 -->
+        <section id="featured-players" class="py-20 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-semibold mb-4">管理组成员展示</h2>
+                    <p class="text-dark text-lg max-w-2xl mx-auto">认识我们服务器中最出色的玩家，他们为社区做出了重要贡献</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8" id="players-container">
+                    <!-- 玩家卡片将通过JavaScript动态加载 -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 加入我们 -->
+        <section id="join" class="py-20 bg-primary/5">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-semibold mb-6" id="join-title">加入服务器</h2>
+                    <p class="text-dark text-lg mb-10 max-w-2xl mx-auto">
+                        只需简单几步，即可加入我们的我的世界服务器，开始你的冒险之旅
+                    </p>
+                    
+                    <div class="bg-white rounded-2xl shadow-sm p-8 md:p-10 text-left max-w-2xl mx-auto">
+                        <ol class="space-y-6">
+                            <li class="flex">
+                                <div class="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-medium mr-4">1</div>
+                                <div>
+                                    <h3 class="text-lg font-medium mb-1">启动我的世界</h3>
+                                    <p class="text-dark">确保你已经安装了正确版本的我的世界游戏客户端</p>
+                                </div>
+                            </li>
+                            <li class="flex">
+                                <div class="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-medium mr-4">2</div>
+                                <div>
+                                    <h3 class="text-lg font-medium mb-1">添加服务器</h3>
+                                    <p class="text-dark">点击" 多人游戏 "，然后点击"添加服务器"按钮</p>
+                                </div>
+                            </li>
+                            <li class="flex">
+                                <div class="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-medium mr-4">3</div>
+                                <div>
+                                    <h3 class="text-lg font-medium mb-1">输入服务器信息</h3>
+                                    <p class="text-dark">在服务器地址栏中输入：<span class="font-medium select-all" id="join-server-ip"></span></p>
+                                </div>
+                            </li>
+                            <li class="flex">
+                                <div class="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-medium mr-4">4</div>
+                                <div>
+                                    <h3 class="text-lg font-medium mb-1">开始游戏</h3>
+                                    <p class="text-dark">点击"完成"，然后选择我们的服务器，点击"加入服务器"</p>
+							<li class="flex">
+                                <div class="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-medium mr-4">5</div>
+                                <div>
+                                    <h3 class="text-lg font-medium mb-1">加入社区</h3>
+                                    <p class="text-dark"><a href="https://qm.qq.com/q/eU9V8Aa1ji">点我加入社区</a></p>
+                                </div>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-secondary text-white py-12">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i class="fa fa-cube text-primary text-2xl"></i>
+                        <span class="text-lg font-medium" id="footer-site-name"></span>
+                    </div>
+                    <p class="text-gray-400 text-sm">
+                        打造最好的我的世界游戏体验，让每一位玩家都能找到乐趣。
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-medium mb-4">快速链接</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#features" class="hover:text-primary transition-colors">服务器特色</a></li>
+                        <li><a href="#screenshots" class="hover:text-primary transition-colors">游戏截图</a></li>
+                        <li><a href="#status" class="hover:text-primary transition-colors">服务器状态</a></li>
+                        <li><a href="#comments" class="hover:text-primary transition-colors">玩家留言</a></li>
+                        <li><a href="#featured-players" class="hover:text-primary transition-colors">优秀玩家</a></li>
+                        <li><a href="donate.html" class="hover:text-primary transition-colors">赞助支持</a></li>
+                        <li><a href="#join" class="hover:text-primary transition-colors">加入我们</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-medium mb-4">社区</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="" id="forum-link" class="hover:text-primary transition-colors">论坛</a></li>
+                        <li><a href="" id="discord-link" class="hover:text-primary transition-colors">Discord</a></li>
+                        <li><a href="" id="qqgroup-link" class="hover:text-primary transition-colors">QQ群</a></li>
+                        <li><a href="" id="bilibili-link" class="hover:text-primary transition-colors">bilibili</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-medium mb-4">支持</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="" id="helpcenter-link" class="hover:text-primary transition-colors">帮助中心</a></li>
+                        <li><a href="" id="rules-link" class="hover:text-primary transition-colors">规则说明</a></li>
+                        <li><a href="" id="contact-link" class="hover:text-primary transition-colors">联系我们</a></li>
+                        <li><a href="" id="report-link" class="hover:text-primary transition-colors">举报问题</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm" id="copyright-text">© 2025 幻境灵云. 保留所有权利。</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                        <i class="fa fa-twitter"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                        <i class="fa fa-instagram"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                        <i class="fa fa-youtube-play"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                        <i class="fa fa-discord"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
