@@ -858,15 +858,11 @@ function initDonorsList() {
         currentDonors.forEach(donor => {
             // 确定赞助等级
             let donorClass, badgeClass, badgeText;
-               if (donor.amount >= 100) {
-                donorClass = 'donor-diamond';
-                badgeClass = 'bg-yellow-100 text-yellow-800';
-                badgeText = '王牌赞助者';
-            } else if (donor.amount >= 50) {
+             if (donor.amount >= 100) {
                 donorClass = 'donor-diamond';
                 badgeClass = 'bg-yellow-100 text-yellow-800';
                 badgeText = '钻石赞助者';
-            } else if (donor.amount >= 30) {
+            } else if (donor.amount >= 50) {
                 donorClass = 'donor-gold';
                 badgeClass = 'bg-gray-100 text-gray-800';
                 badgeText = '黄金赞助者';
