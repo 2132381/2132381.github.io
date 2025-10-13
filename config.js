@@ -69,20 +69,21 @@ const AppConfig = {
         //     date: "2025-05-18",
         //     avatar: "https://picsum.photos/id/10/48/48"
         // },
+
+		 {
+				name: "mujiyu",
+				amount: 300,
+				message: "服务器机子",
+				date: "2024年-2025年",
+				avatar: "img/5.png"
+			},
+		
             {
 				name: "一只企鹅",
 				amount: 10,
 				message: "服务器很棒，希望越做越好！",
 				date: "2024年",
 				avatar: "img/3.jpg"
-			},
-
-		   {
-				name: "mujiyu",
-				amount: 300,
-				message: "服务器机子",
-				date: "2024年-2025年",
-				avatar: "img/5.png"
 			},
     ],
 
@@ -154,3 +155,4 @@ const AppConfig = {
     }
 
 };
+
