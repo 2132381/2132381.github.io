@@ -76,7 +76,14 @@ const AppConfig = {
 				date: "2024年",
 				avatar: "img/3.jpg"
 			},
-		
+
+		   {
+				name: "mujiyu",
+				amount: 300,
+				message: "服务器机子",
+				date: "2024年-2025年",
+				avatar: "img/5.png"
+			},
     ],
 
     // 优秀玩家配置
@@ -145,4 +152,5 @@ const AppConfig = {
         wechat: "img/4.jpg",
         alipay: "img/5.jpg"
     }
+
 };
