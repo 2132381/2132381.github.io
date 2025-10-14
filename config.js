@@ -77,6 +77,14 @@ const AppConfig = {
 				date: "2024年-2025年",
 				avatar: "img/5.png"
 			},
+
+         {
+				name: "欣",
+				amount: 10,
+				message: "服务器很棒，希望越做越好！",
+				date: "2024年",
+				avatar: "img/6.jpg"
+			},
 		
             {
 				name: "一只企鹅",
@@ -155,4 +163,5 @@ const AppConfig = {
     }
 
 };
+
 
