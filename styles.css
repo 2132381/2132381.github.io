@@ -1,0 +1,225 @@
+/* 全局样式 - 确保所有页面风格统一 */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'SF Pro Display', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* 动画效果 - 所有页面共用 */
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.status-indicator.online {
+    animation: pulse 2s infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.loading-spinner {
+    animation: spin 1s linear infinite;
+    display: none;
+}
+
+/* 轮播图核心样式 */
+#carousel {
+    position: relative;
+    overflow: hidden;
+}
+
+/* 轮播控制按钮样式 - 确保可点击性 */
+#carousel-prev, #carousel-next {
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
+
+#carousel-prev:hover, #carousel-next:hover {
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* 轮播指示器样式 */
+#carousel-indicators button {
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    margin: 0 2px;
+    transition: all 0.3s ease;
+}
+
+/* 截图样式 */
+#screenshot-wrapper {
+    position: relative;
+    min-height: 620px;
+    overflow: hidden;
+}
+
+.screenshot-page {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: all 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+/* 截图动画 */
+.page-next-enter {
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+.page-next-enter-active {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.page-next-exit-active {
+    transform: translateX(-100%);
+    opacity: 0;
+}
+
+.page-prev-enter {
+    transform: translateX(-100%);
+    opacity: 0;
+}
+
+.page-prev-enter-active {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.page-prev-exit-active {
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+/* 截图项 */
+.screenshot-item {
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 响应式截图高度 */
+@media (max-width: 768px) {
+    #screenshot-wrapper {
+        min-height: 440px;
+    }
+    .screenshot-item {
+        height: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    #screenshot-wrapper {
+        min-height: 360px;
+    }
+    .screenshot-item {
+        height: 160px;
+    }
+}
+
+/* 分页指示器 */
+.page-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #d1d5db;
+    transition: all 0.3s ease;
+}
+
+.page-dot.active {
+    background-color: #0071e3;
+    width: 24px;
+    border-radius: 4px;
+}
+
+/* 留言样式 */
+.comment-content {
+    line-height: 1.6;
+}
+
+/* 按钮状态 */
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* 赞助页面样式 */
+.qrcode-container {
+    transition: all 0.3s ease;
+}
+
+.qrcode-container:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+#donors-list > div {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#donors-list > div:hover {
+    transform: translateX(4px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+/* 搜索框样式 */
+#donor-search {
+    transition: all 0.2s ease;
+}
+
+#donor-search:focus {
+    width: 100%;
+    max-width: 200px;
+}
+
+/* 排序按钮样式 */
+#sort-amount, #sort-date {
+    transition: all 0.2s ease;
+}
+
+/* 确保图片不拉伸 */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* 导航栏样式 */
+#navbar {
+    transition: all 0.3s ease-in-out;
+}
+
+/* 链接样式 */
+a {
+    transition: color 0.2s ease;
+}
+
+/* 卡片悬停效果 */
+.bg-white.rounded-xl.shadow-sm {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bg-white.rounded-xl.shadow-sm:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+/* 响应式调整 */
+@media (max-width: 1024px) {
+    .lg\:col-span-2, .lg\:col-span-3 {
+        grid-column: span 1;
+    }
+}
+    
