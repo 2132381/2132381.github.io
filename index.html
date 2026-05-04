@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>🍓 mujiyu赞助</title>
+  <title>🍓 软软可爱商城</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
   
@@ -52,13 +52,15 @@
 <header class="sticky top-0 z-50 bg-white/90 backdrop-blur shadow-sm">
   <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
     <a href="#" onclick="showPage('home')" class="text-2xl font-bold text-primary flex items-center gap-2">
-      <i class="fa fa-shopping-basket"></i> mujiyu
+      <i class="fa fa-shopping-basket"></i> 软软商城
     </a>
     <div class="flex gap-3 items-center" id="nav-buttons">
       <button onclick="showPage('home')" class="cute-btn text-sm"><i class="fa fa-home mr-1"></i> 首页</button>
       <button onclick="showPage('cart')" class="cute-btn text-sm"><i class="fa fa-shopping-cart mr-1"></i> 购物车</button>
       <button onclick="showPage('order')" class="cute-btn text-sm"><i class="fa fa-list-alt mr-1"></i> 我的订单</button>
+      <!-- 公告按钮 -->
       <button onclick="openNoticeModal()" class="cute-btn text-sm bg-orange-400"><i class="fa fa-bullhorn mr-1"></i> 公告</button>
+      <!-- 联系客服按钮 -->
       <button onclick="openServiceModal()" class="cute-btn text-sm bg-green-400"><i class="fa fa-headphones mr-1"></i> 联系客服</button>
       <button onclick="showAdminLogin()" class="cute-btn text-sm hidden" id="admin-btn">
         <i class="fa fa-cog mr-1"></i> 管理后台
@@ -170,7 +172,7 @@
       </div>
 
       <div class="mb-6 border-b pb-6">
-        <h3 class="font-bold mb-3">📦 订单管理（发货/没货/删除）</h3>
+        <h3 class="font-bold mb-3">📦 订单管理（发货/没货）</h3>
         <div id="admin-order-list" class="space-y-4"></div>
       </div>
 
@@ -191,7 +193,7 @@
     </div>
     <div class="space-y-3 text-base text-gray-700">
       <p>📢 本店正常营业，下单当天发货</p>
-      <p>📦 发货时间：每日 17:30 统一发货</p>
+      <p>📦 发货时间：每日 16:00 统一发货</p>
       <p>💬 售后问题请联系客服处理</p>
       <p>⏰ 客服在线时间：9:00 - 22:00</p>
       <p class="text-sm text-gray-400">感谢您的支持与光临 ❤️</p>
@@ -208,8 +210,8 @@
       <button onclick="closeServiceModal()" class="text-xl">&times;</button>
     </div>
     <div class="space-y-3 text-base">
-      <p>📱 客服微信：<span class="text-primary font-bold">wxid_vnnp7xd25p7c22</span></p>
-      <p>💬 客服QQ：<span class="text-primary font-bold"></span>3986506974</p>
+      <p>📱 客服微信：<span class="text-primary font-bold">kefu001</span></p>
+      <p>💬 客服QQ：<span class="text-primary font-bold">123456789</span></p>
       <p>🕒 工作时间：9:00 - 22:00</p>
       <p class="text-gray-500 text-sm">如有订单、售后、商品问题均可咨询</p>
     </div>
@@ -296,7 +298,7 @@
       <button onclick="closeModal()" class="text-xl">&times;</button>
     </div>
     <p class="mb-4 text-gray-600">请使用微信扫码支付</p>
-    <img src="weixin.jpg" alt="微信支付二维码" class="mx-auto rounded-xl mb-4">
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=wechat://pay.demo" alt="微信支付二维码" class="mx-auto rounded-xl mb-4">
     <button onclick="confirmOrder()" class="payment-btn bg-wechat w-full">我已完成支付</button>
   </div>
 </div>
@@ -308,7 +310,7 @@
       <button onclick="closeModal()" class="text-xl">&times;</button>
     </div>
     <p class="mb-4 text-gray-600">请使用支付宝扫码支付</p>
-    <img src="zhifubao.jpg" alt="支付宝支付二维码" class="mx-auto rounded-xl mb-4">
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=alipay://pay.demo" alt="支付宝支付二维码" class="mx-auto rounded-xl mb-4">
     <button onclick="confirmOrder()" class="payment-btn bg-alipay w-full">我已完成支付</button>
   </div>
 </div>
@@ -333,16 +335,6 @@
   }
   function closeNoticeModal(){
     document.getElementById('notice-modal').classList.add('hidden');
-  }
-
-  // 删除订单（用户 + 管理员通用）
-  function deleteOrder(orderId){
-    if(!confirm('确定要删除该订单吗？删除后无法恢复！')) return;
-    orders = orders.filter(o => o.id !== orderId);
-    localStorage.setItem('orders', JSON.stringify(orders));
-    renderOrders();
-    renderAdminOrders();
-    alert('订单删除成功');
   }
 
   // 分类功能
@@ -617,7 +609,6 @@
             <button onclick="setOrderStatus(${o.id},'已发货')" class="cute-btn text-sm bg-blue-400">已发货</button>
             <button onclick="setOrderStatus(${o.id},'没货')" class="cute-btn text-sm bg-red-400">没货</button>
             <button onclick="openOrderProof(${o.id})" class="cute-btn text-sm bg-gray-400">订单凭证</button>
-            <button onclick="deleteOrder(${o.id})" class="cute-btn text-sm bg-red-500">删除订单</button>
           </div>
         </div>
       </div>
@@ -780,7 +771,6 @@
     showPage('order');
   }
 
-  // 我的订单（带删除按钮）
   function renderOrders() {
     if(!currentUser) {
       document.getElementById('order-list').innerHTML = '<p class="text-center py-6 text-gray-400">请先登录</p>';
@@ -814,10 +804,7 @@
         </div>
         <div class="flex flex-wrap justify-between items-center gap-2">
           <div class="font-bold">合计：¥ ${o.total}</div>
-          <div class="flex gap-2">
-            <button onclick="openOrderProof(${o.id})" class="cute-btn text-sm bg-gray-400">📄 订单凭证</button>
-            <button onclick="deleteOrder(${o.id})" class="cute-btn text-sm bg-red-500">删除订单</button>
-          </div>
+          <button onclick="openOrderProof(${o.id})" class="cute-btn text-sm bg-gray-400">📄 订单凭证</button>
         </div>
       </div>
       `;
